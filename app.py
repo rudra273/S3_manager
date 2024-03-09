@@ -1,5 +1,4 @@
-# AKIA5FTY7PAX23A7D7NM
-# GMkKisNu0mEd41FVb6so8ZnMM6Mm/ulPfqSJ8+Uv
+
 
 
 from flask import Flask, render_template, request, redirect, url_for
