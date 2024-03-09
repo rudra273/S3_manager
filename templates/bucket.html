@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container display-5 my-4"> 
+    Bucket Name: {{ bucket_name }}
+</div>
+
+<div class="container create_folder my-2">
+
+    <form action="/create_folder/{{ bucket_name }}" method="post" class="mt-3 w-50">
+        <div class="input-group">
+            <input type="text" name="folder_name" class="form-control" placeholder="Enter folder name" required>
+            <button type="submit" class="btn btn-primary">Create Folder</button>
+        </div>
+    </form>    
+</div>
+
+  
+<div class="uploadfiles container my-2"> 
+    <form action="{{ url_for('upload_file', bucket_name= bucket_name) }}" method="post" enctype="multipart/form-data" class="mt-3 w-50">
+        <div class="input-group">
+            <input type="file" name="file" class="form-control" multiple>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+        
+    </form>
+</div>
+
+<div class="container objects">
+
+    <h4>Objects:</h4>
+
+    <form class="w-50" action="/handle_operation/{{ bucket_name }}" method="post">
+        {% for object in object_keys %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="selected_objects" value="{{ object }}">
+            <label class="form-check-label">{{ object|e }}</label>
+        </div>
+        {% endfor %}
+        <div class="mt-3">
+            <label for="destination_bucket" class="form-label">Select Destination Bucket:</label>
+            <select name="destination_bucket" id="destination_bucket" class="form-select">
+                <option value="">Select a bucket</option>
+                {% for bucket in available_buckets %}
+                <option value="{{ bucket }}">{{ bucket }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary" name="action" value="move">Move Selected</button>
+            <button type="submit" class="btn btn-primary" name="action" value="copy">Copy Selected</button>
+            <button type="submit" class="btn btn-danger" name="action" value="delete">Delete Selected</button>
+        </div>
+    </form>
+    
+    
+      
+
+
+</div>
+ 
+
+{% endblock %} 

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="create_bucket container my-5">
+    <h2>Create a new Bucket: </h2>
+    <form class="d-flex " action="{{url_for('create_bucket')}}">
+
+        <input class="form-control w-50" type="text" name="bucket_name" placeholder="Enter bucket Name">
+        
+        <input class="btn btn-success mx-3" type="submit" value="Create"/>
+    </form>
+</div>
+
+<div class="container list_buckets">
+    <h1>All Buckets</h1> 
+    <br>
+    {% for bucket in buckets %}
+        <div class="row my-2">
+            <a class="col-4 text-decoration-none text-success fw-bold fs-4" href="{{ url_for('list_bucket_objects', bucket_name=bucket['Name'] ) }}">{{bucket['Name']}}</a>
+            <a class="col-1 btn btn-outline-danger" href="{{ url_for('delete_bucket', bucket_name=bucket['Name'] ) }}">Delete</a>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+
+{% endblock %} 
