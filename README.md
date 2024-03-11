@@ -46,7 +46,7 @@ if __name__ == "__main__":
 ```
   
 **Run the Application-**
-
+```python
 python app.py
-
-_ The application should now be running locally. Visit http://localhost:5000 in your web browser to access it. _
+```
+*The application should now be running locally. Visit http://localhost:5000 in your web browser to access it.*
