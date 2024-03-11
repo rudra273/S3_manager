@@ -1,5 +1,5 @@
-**S3 Manager is a Flask web application that allows users to manage their Amazon S3 buckets through a user-friendly interface. With S3 Manager, users can perform CRUD (Create, Read, Update, Delete) operations on their S3 buckets using Flask and Boto3.**
-
+##S3 Manager is a Flask web application that allows users to manage their Amazon S3 buckets through a user-friendly interface. With S3 Manager, users can perform CRUD (Create, Read, Update, Delete) operations on their S3 buckets using Flask and Boto3.
+___
 **Live Demo-**
 
 **Experience S3 Manager live:**  https://s3-manager-7w8e.vercel.app/
@@ -35,9 +35,10 @@ pip install -r requirements.txt
 
 **Add the Following Lines to app.py-**
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
+```python
+    if __name__ == "__main__":
+        app.run(debug=True)
+    ```
 
 **Run the Application-**
 
