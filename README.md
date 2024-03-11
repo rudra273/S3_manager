@@ -10,7 +10,7 @@ If you prefer to run the application locally or customize it, follow these steps
 
 Clone the Repository- 
 
-git clone <repository_ssh_link>
+git clone https://github.com/rudra273/S3_manager.git
 
 Set Up Virtual Environment-
 
