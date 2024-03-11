@@ -36,12 +36,13 @@ pip install -r requirements.txt
 
 **Add the Following Lines to app.py-**
 
+```markdown
 ```python
     if __name__ == "__main__":
         app.run(debug=True)
-    ```
 
-**Run the Application**
+```markdown
+**Run the Application-**
 
 python app.py
 
