@@ -12,27 +12,31 @@ If you prefer to run the application locally or customize it, follow these steps
 
 
 **Clone the Repository-**
-
+```bash
 git clone https://github.com/rudra273/S3_manager.git
+```
 
 **Set Up Virtual Environment-**
-
+```bash
 cd s3_manager
-
 python -m venv venv
+```
 
 **Activate Virtual Environment-
 On Windows:**
-
+```bash
 venv\Scripts\activate
+```
 
 **On macOS and Linux:**
-
+```bash
 source venv/bin/activate
+```
 
 **Install Dependencies-**
-
+```bash
 pip install -r requirements.txt
+```
 
 **Add the Following Lines to app.py-**
 
