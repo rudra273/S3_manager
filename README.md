@@ -15,6 +15,7 @@ git clone https://github.com/rudra273/S3_manager.git
 Set Up Virtual Environment-
 
 cd s3_manager
+
 python -m venv venv
 
 Activate Virtual Environment-
