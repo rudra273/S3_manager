@@ -22,8 +22,8 @@ cd s3_manager
 python -m venv venv
 ```
 
-**Activate Virtual Environment-
-On Windows:**
+**Activate Virtual Environment-**
+**On Windows:**
 ```bash
 venv\Scripts\activate
 ```
