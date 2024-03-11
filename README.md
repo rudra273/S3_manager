@@ -36,8 +36,7 @@ pip install -r requirements.txt
 
 **Add the Following Lines to app.py-**
 
-```python  if __name__ == "__main__":  ```
-
+if __name__ == "__main__":  ```
          app.run(debug=True)  ``` 
     
 **Run the Application-**
