@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from botocore.exceptions import ClientError
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 
 import boto3
 
@@ -56,13 +57,38 @@ def index():
     return render_template('index.html', buckets = buckets)  
 
 
+# @app.route('/create_bucket') 
+# def create_bucket():
+#     name =  request.args.get("bucket_name")
+#     res = s3_client.create_bucket(Bucket = name )
+#     print(res)
+#     return redirect(url_for('index'))  
+
 @app.route('/create_bucket') 
 def create_bucket():
-    name =  request.args.get("bucket_name")
-    res = s3_client.create_bucket(Bucket = name )
-    print(res)
-    return redirect(url_for('index'))  
-
+    name = request.args.get("bucket_name")
+    try:
+        s3_client.head_bucket(Bucket=name)
+        error_message = f"A bucket with the name '{name}' already exists in your account."
+        flash(error_message, 'error')
+        return redirect(url_for('index'))
+    except ClientError as e: 
+        if e.response['Error']['Code'] == '404':
+            try:
+                s3_client.create_bucket(Bucket=name)
+                flash(f"Bucket '{name}' created successfully.", 'success') 
+            except ClientError as ce:
+                if ce.response['Error']['Code'] == 'BucketAlreadyOwnedByYou':
+                    error_message = f"A bucket with the name '{name}' already exists in your account."
+                elif ce.response['Error']['Code'] == 'BucketAlreadyExists':
+                    error_message = f"A bucket with the name '{name}' already exists. Bucket names must be globally unique."
+                else:
+                    error_message = f"An error occurred: {ce}"
+                flash(error_message, 'error')
+        elif e.response['Error']['Code'] == '403':
+            error_message = f"A bucket with the name '{name}' already exists globally and is owned by another AWS account."
+            flash(error_message, 'error')
+    return redirect(url_for('index'))
 
 @app.route('/delete_bucket/<bucket_name>')
 def delete_bucket(bucket_name):
