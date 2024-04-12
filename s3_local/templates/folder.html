@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Folder Contents</h1>
+    <h2>Files in "{{ prefix }}" folder:</h2>
+    <ul>
+        {% for object in object_keys %}
+            <li>{{ object }}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}
